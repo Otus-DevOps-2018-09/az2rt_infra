@@ -1,29 +1,28 @@
-# Выполнено ДЗ №3
+# Выполнено ДЗ №4
 
  - [+] Основное ДЗ
  - [+] Задание со *
 
 ## В процессе сделано:
- - Пункт 1:
-Добавил в ~/.ssh/config следующее
-Host *
-  ForwardAgent yes
- - Пункт 2
-Добавил в ~/.ssh/config следующее
-Host someinternalhost
- ForwardAgent yes
- HostName 10.140.0.3
- User i.kudryashov
- ProxyCommand ssh i.kudryashov@104.199.165.59 nc %h %p %r
- - Пункт 3
- bastion_IP = 104.199.165.59 
- someinternalhost_IP = 10.140.0.3
-
-## Как запустить проект:
- - Например, запустить команду X в директории Y
-
+Создал образ из конфигурационного файла - ubuntu16.json,
+создал инстанст в GPC с автом-ки устанавливаемыми ruby/mongodb/reddit;
+добавил переменные в packer конфиг - проверил что образ создается
+ # Как запустить проект:
+ cp variadles.json.example
+ заменить переменные на свои (название проекта, базовый образ, тип инстанста)
+ packer build -var-file=variables.json ubuntu16.json
+ 
+ либо запустить
+ create-reddit-vm.sh
+ 
 ## Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
+ gcloud compute instances create reddit-app\
+  --boot-disk-size=10GB \
+  --image-family reddit-full \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server \
+  --restart-on-failure
 
 ## PR checklist
  - [ ] Выставил label с номером домашнего задания
