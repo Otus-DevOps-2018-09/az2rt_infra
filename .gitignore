@@ -1,0 +1,4 @@
+.DS_Store
+.idea/
+packer/variables.json
+packer/
