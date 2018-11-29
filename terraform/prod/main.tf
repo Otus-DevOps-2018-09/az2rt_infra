@@ -24,13 +24,3 @@ module "vpc" {
   public_key_path = "${var.public_key_path}"
   source_ranges   = ["185.6.245.156/32"]
 }
-
-module "storage-bucket" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.1.1"
-  name    = ["azart-bucket"]
-}
-
-output storage-bucket_url {
-  value = "${module.storage-bucket.url}"
-}
