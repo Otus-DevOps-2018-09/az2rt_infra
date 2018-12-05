@@ -4,27 +4,14 @@
  - [+] Задание со *
 
 ## В процессе сделано:
- - Пункт 1:
-Добавил в ~/.ssh/config следующее
-Host *
-  ForwardAgent yes
- - Пункт 2
-Добавил в ~/.ssh/config следующее
-Host someinternalhost
- ForwardAgent yes
- HostName 10.140.0.3
- User i.kudryashov
- ProxyCommand ssh i.kudryashov@104.199.165.59 nc %h %p %r
- - Пункт 3
- bastion_IP = 104.199.165.59 
- someinternalhost_IP = 10.140.0.3
-
+ testapp_IP=35.221.187.226
+ testapp_port=9292
 ## Как запустить проект:
- - Например, запустить команду X в директории Y
+ gcloud compute instances create reddit-app --boot-disk-size=10GB  --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud  --machine-type=g1-small  --tags puma-server  --restart-on-failure --metadata-from-file startup-script=./deploy.sh
 
 ## Как проверить работоспособность:
- - Например, перейти по ссылке http://localhost:8080
+ http://35.221.187.226:9292
 
 ## PR checklist
- - [ ] Выставил label с номером домашнего задания
- - [ ] Выставил label с темой домашнего задания
+ - [+] Выставил label с номером домашнего задания
+ - [+] Выставил label с темой домашнего задания
