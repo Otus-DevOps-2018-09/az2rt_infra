@@ -41,9 +41,9 @@
       systemd: name=puma enabled=yes
 
   handlers:
-    - name: reload puma
-        become: true
-        service: name=puma state=restarted
+  - name: reload puma
+    become: true
+    service: name=puma state=restarted
 
 - name: Deploy App
   hosts: app
