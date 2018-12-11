@@ -1,17 +1,35 @@
-# Выполнено ДЗ №3
+# Выполнено ДЗ №7
+(ansible-1)
 
  - [+] Основное ДЗ
- - [+] Задание со *
+ - [ ] Задание со *
 
 ## В процессе сделано:
- testapp_IP=35.221.187.226
- testapp_port=9292
+ 1) после удаление на хосте и применения clone.yml вывод изменился, потому что выполнился плейбук (первый запуск прошел сразу тк папка уже была)
+ 2) добавлен плейбук clone.yml, файл конфиг для 
+
 ## Как запустить проект:
- gcloud compute instances create reddit-app --boot-disk-size=10GB  --image-family ubuntu-1604-lts  --image-project=ubuntu-os-cloud  --machine-type=g1-small  --tags puma-server  --restart-on-failure --metadata-from-file startup-script=./deploy.sh
+  cd terrafrom && terraform apply (предварительно создать terraform.tfvars )
+  app_external_ip добавить в ansible/invertory.yml в секцию
+  ---
+- name: Clone
+  hosts: app
+  tasks:
+    - name: Clone repo
+      git:
+        repo: https://github.com/express42/reddit.git
+        dest: /home/appuser/reddit
+   
+   выполнить terraform show | grep nat 
+   значение network_interface.0.access_config.0.nat_ip
+   добавить в 
+    dbserver:
+        ansible_host: 35.195.7.43
+  cd ansible && ansible-playbook clone.yml
 
 ## Как проверить работоспособность:
- http://35.221.187.226:9292
+ ansible app -m shell -a 'ls -la ./'
 
 ## PR checklist
- - [+] Выставил label с номером домашнего задания
- - [+] Выставил label с темой домашнего задания
+ - [ ] Выставил label с номером домашнего задания
+ - [ ] Выставил label с темой домашнего задания
