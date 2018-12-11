@@ -10,10 +10,10 @@
         {
             "type": "googlecompute",
             "project_id": "{{user `project_id`}}",
-            "image_name": "reddit-app-base",
+            "image_name": "reddit-app-base-ansible",
             "image_family": "reddit-base",
             "source_image_family": "{{user `source_image_family`}}",
-            "zone": "europe-west1-b",
+            "zone": "asia-east1-b",
             "ssh_username": "appuser",
             "machine_type": "{{user `machine_type`}}",
             "image_description": "{{user `image_description`}}",
@@ -25,9 +25,12 @@
     ],
     "provisioners": [
         {
-          "type": "shell",
-          "script": "scripts/install_ruby.sh",
-          "execute_command": "sudo {{.Path}}"
+            "type": "shell",
+            "inline": ["sudo apt install python-apt"]
+        },
+        {
+            "type": "ansible",
+            "playbook_file": "ansible/packer_app.yml"
         }
     ]
 }
