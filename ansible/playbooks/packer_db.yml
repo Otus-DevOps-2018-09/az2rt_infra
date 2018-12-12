@@ -25,4 +25,4 @@
     - name: Configure service
       systemd:
         name: mongod
-        enaled: yes
+        enabled: yes
