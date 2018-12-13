@@ -9,3 +9,5 @@ packer/variables.json
 stage/.terraform/
 .backup
 .retry
+jdauphant.nginx
+vault.key
