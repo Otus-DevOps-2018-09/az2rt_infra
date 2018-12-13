@@ -1,0 +1,36 @@
+{
+    "variables": {
+        "image_descrpition": "packer-app-base",
+        "disk_size": "10",
+        "disk_type": "pd-standard",
+        "network": "default",
+        "tags": "puma-server,http-server"
+    },
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `project_id`}}",
+            "image_name": "reddit-app-base-ansible",
+            "image_family": "reddit-base",
+            "source_image_family": "{{user `source_image_family`}}",
+            "zone": "asia-east1-b",
+            "ssh_username": "appuser",
+            "machine_type": "{{user `machine_type`}}",
+            "image_description": "{{user `image_description`}}",
+            "disk_size": "{{user `disk_size`}}",
+            "disk_type": "{{user `disk_type`}}",
+            "network": "{{user `network`}}",
+            "tags": "{{user `tags`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": ["sudo apt install python-apt"]
+        },
+        {
+            "type": "ansible",
+            "playbook_file": "ansible/packer_app.yml"
+        }
+    ]
+}
