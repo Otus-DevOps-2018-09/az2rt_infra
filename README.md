@@ -1,35 +1,30 @@
-# Выполнено ДЗ №7
-(ansible-1)
+# Выполнено ДЗ №9
+(ansible-4)
 
  - [ ] Основное ДЗ
  - [ ] Задание со *
 
 ## В процессе сделано:
- 1) после удаление на хосте и применения clone.yml вывод изменился, потому что выполнился плейбук (первый запуск прошел сразу тк папка уже была)
- 2) добавлен плейбук clone.yml, файл конфиг для 
-
+ Разворачинвание проекта локально с помощью vagrant 
+ Добавлены в роли app/db шаги установки/настройки компонентов
+ Добавлены инструмнты для тестирования ВМ и сервисов
+  
 ## Как запустить проект:
-  cd terrafrom && terraform apply (предварительно создать terraform.tfvars )
-  app_external_ip добавить в ansible/invertory.yml в секцию
-  ---
-- name: Clone
-  hosts: app
-  tasks:
-    - name: Clone repo
-      git:
-        repo: https://github.com/express42/reddit.git
-        dest: /home/appuser/reddit
-   
-   выполнить terraform show | grep nat 
-   значение network_interface.0.access_config.0.nat_ip
-   добавить в 
-    dbserver:
-        ansible_host: 35.195.7.43
-  cd ansible && ansible-playbook clone.yml
-
+    локальное разворачивание проекта
+ ```bash
+    cd ansible ; vagrant up 
+ ```
+    прогон автотестов
+ ```bash
+    virtualenv my_project
+    source my_project/bin/activate
+    cd ansible/ ; pip install -r requirements.txt 
+    cd ansible/roles/db ; molecula create
+ ```
 ## Как проверить работоспособность:
- ansible app -m shell -a 'ls -la ./'
-
+    проверить локальное приложение: в браузере http://10.10.10.20:9292
+    прогнать тесты: molecula verify
+ 
 ## PR checklist
  - [ ] Выставил label с номером домашнего задания
  - [ ] Выставил label с темой домашнего задания
