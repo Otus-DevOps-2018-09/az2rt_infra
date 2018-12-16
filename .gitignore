@@ -1,4 +1,3 @@
-.idea/
 .DS_Store
 .idea/
 packer/variables.json
@@ -7,3 +6,6 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
+stage/.terraform/
+.backup
+.retry
