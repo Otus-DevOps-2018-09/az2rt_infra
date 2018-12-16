@@ -1,0 +1,12 @@
+---
+- name: Instal ruby & bundler
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install ruby
+      apt:
+        name: [u'ruby-full', u'ruby-bundler', u'build-essential']
