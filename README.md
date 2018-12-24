@@ -1,34 +1,18 @@
-# Выполнено ДЗ №7
-(ansible-1)
-
+# Выполнено ДЗ №6
+terraform-1
  - [ ] Основное ДЗ
  - [ ] Задание со *
 
 ## В процессе сделано:
- 1) после удаление на хосте и применения clone.yml вывод изменился, потому что выполнился плейбук (первый запуск прошел сразу тк папка уже была)
- 2) добавлен плейбук clone.yml, файл конфиг для 
+ - определил input переменную для приватного ключа
+ - отформатировал все файлы
+ - добавил terraform.tfvars.example
 
 ## Как запустить проект:
-  cd terrafrom && terraform apply (предварительно создать terraform.tfvars )
-  app_external_ip добавить в ansible/invertory.yml в секцию
-  ---
-- name: Clone
-  hosts: app
-  tasks:
-    - name: Clone repo
-      git:
-        repo: https://github.com/express42/reddit.git
-        dest: /home/appuser/reddit
-   
-   выполнить terraform show | grep nat 
-   значение network_interface.0.access_config.0.nat_ip
-   добавить в 
-    dbserver:
-        ansible_host: 35.195.7.43
-  cd ansible && ansible-playbook clone.yml
+ - terraform apply
 
 ## Как проверить работоспособность:
- ansible app -m shell -a 'ls -la ./'
+ - Например, перейти по ссылке http://<external_ip>:9292
 
 ## PR checklist
  - [ ] Выставил label с номером домашнего задания
