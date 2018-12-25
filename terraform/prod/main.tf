@@ -22,5 +22,5 @@ module "vpc" {
   disk_image      = "${var.disk_image}"
   source          = "../modules/vpc"
   public_key_path = "${var.public_key_path}"
-  source_ranges   = ["185.6.245.156/32"]
+  source_ranges   = ["109.252.71.117/32"]
 }

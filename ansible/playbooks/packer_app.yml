@@ -8,5 +8,8 @@
         update_cache: yes
 
     - name: Install ruby
-      apt:
-        name: [u'ruby-full', u'ruby-bundler', u'build-essential']
+      apt: "name={{ item }} state=present"
+      with_items:
+        - ruby-full
+        - ruby-bundler
+        - build-essential
