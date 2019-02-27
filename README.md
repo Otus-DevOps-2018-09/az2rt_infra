@@ -1,29 +1,29 @@
 # Выполнено ДЗ №4
-reopen
- - [+] Основное ДЗ
- - [+] Задание со *
+ansible-4 reopen
+ - [ ] Основное ДЗ
+ - [ ] Задание со *
 
 ## В процессе сделано:
-Создал образ из конфигурационного файла - ubuntu16.json,
-создал инстанст в GPC с автом-ки устанавливаемыми ruby/mongodb/reddit;
-добавил переменные в packer конфиг - проверил что образ создается
- # Как запустить проект:
- cp variadles.json.example
- заменить переменные на свои (название проекта, базовый образ, тип инстанста)
- packer build -var-file=variables.json ubuntu16.json
- 
- либо запустить
- create-reddit-vm.sh
- 
+ Разворачинвание проекта локально с помощью vagrant 
+ Добавлены в роли app/db шаги установки/настройки компонентов
+ Добавлены инструмнты для тестирования ВМ и сервисов
+  
+## Как запустить проект:
+    локальное разворачивание проекта
+ ```bash
+    cd ansible ; vagrant up 
+ ```
+    прогон автотестов
+ ```bash
+    virtualenv my_project
+    source my_project/bin/activate
+    cd ansible/ ; pip install -r requirements.txt 
+    cd ansible/roles/db ; molecula create
+ ```
 ## Как проверить работоспособность:
- gcloud compute instances create reddit-app\
-  --boot-disk-size=10GB \
-  --image-family reddit-full \
-  --image-project=ubuntu-os-cloud \
-  --machine-type=g1-small \
-  --tags puma-server \
-  --restart-on-failure
-
+    проверить локальное приложение: в браузере http://10.10.10.20:9292
+    прогнать тесты: molecula verify
+ 
 ## PR checklist
  - [ ] Выставил label с номером домашнего задания
  - [ ] Выставил label с темой домашнего задания
